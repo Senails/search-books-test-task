@@ -2,9 +2,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from '../redux/index';
 import { Provider } from 'react-redux';
 
-import { MainPage } from "../pages/MainPage";
-import { BookPage } from "../pages/BookPage";
-import { ErrorPage } from "../pages/ErrorPage";
+import { MainPage } from "../pages/main-page";
+import { BookPage } from "../pages/book-page";
+import { ErrorPage } from "../pages/error-page";
 import { MainTamplate } from "../pages/template";
 
 
