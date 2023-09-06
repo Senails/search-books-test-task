@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { MainPage } from "../pages/MainPage";
 import { BookPage } from "../pages/BookPage";
 import { ErrorPage } from "../pages/ErrorPage";
+import { MainTamplate } from "../pages/template";
 
 
 const router = createBrowserRouter([
@@ -22,7 +23,9 @@ const router = createBrowserRouter([
 
 function App() {
   return <Provider store={store}>
-    <RouterProvider router={router} />
+    <MainTamplate>
+      <RouterProvider router={router} />
+    </MainTamplate>
   </Provider>
 }
 

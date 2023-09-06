@@ -7,8 +7,6 @@ type props={
 
 export function MainTamplate({ children }: props){
     return <div className={styles.screen}>
-        <div className={styles.screen_center}>
-            {children}
-        </div>
+        {children}
     </div>
 }
