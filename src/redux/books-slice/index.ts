@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-export interface CounterState {
-  value: number
+export interface booksState {
+  isLoading: boolean,
+  value: number,
 }
 
-const initialState: CounterState = {
+const initialState: booksState = {
+  isLoading: false,
   value: 0,
 }
 
