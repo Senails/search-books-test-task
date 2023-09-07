@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import booksReducer from '../search-for-books/redux-books-slice';
+import booksReducer from '../search-for-books/entities';
 
 export const store = configureStore({
   reducer: {
@@ -9,3 +9,6 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export const dispatch = store.dispatch;
+export const getState = store.getState;

@@ -1,39 +1,34 @@
 import styles from "./index.module.css"
-
 import { Loader } from "../../shared/components/loader";
 import { MouseHoverHint } from '../../shared/components/mouse-hover-hint/index';
-import { SeacrhForm, SearctData } from '../../search-for-books/widgets/search-form/index';
+import { SeacrhForm } from '../../search-for-books/widgets/search-form/index';
+import { CardsConteiner } from '../../search-for-books/widgets/cards-conteiner/index';
+import { Button } from '../../shared/components/button/index';
+import { useAppSelector } from "../../redux/hooks";
+import { LoadMore, onClickSubmit } from "../../search-for-books/entities/actions";
 
 
 export function MainPage(){
-    async function onsubmitform({categories, sorting, inputtext}:SearctData){
-        // const json = await getBooks({
-        //     searchText: "harry",
-        //     sortingMethod: "newest",
-        //     indexStart: "0",
-        //     categories: "history"
-        // });
-
-        // console.log(json);
-
-        // const json2 = await getBook("VvOxEAAAQBAJ");
-
-        // console.log(json2.volumeInfo.imageLinks.thumbnail);
-    }
-
+    const {isLoading, isFirstLoading, countResults} = useAppSelector((s)=>s.books);
 
     return <div className={styles.mainPage}>
-        {/* форма */}
+        <div style={{height: "50px"}}></div>
         <MouseHoverHint text="Этот поиск работает с google api книг и получает их по параметрам">
             <h1 style={{color: "white"}}>SearchBooks</h1>
         </MouseHoverHint>
-        <SeacrhForm onSubmit={onsubmitform}/>
+
+        {/* форма */}
+        <SeacrhForm onClickSubmit={onClickSubmit}/>
+
+        {/* countResults */}
+        {countResults?<p className={styles.countResults}>Count Results: {countResults}</p>:<></>}
 
         {/* карточки */}
-        <MouseHoverHint text="загружаем...">
-            <Loader color="white"/>
-        </MouseHoverHint>
+        <CardsConteiner/>
 
-        <div style={{height:"300px"}}></div>
+        {/* load more */}
+        {!isLoading && !isFirstLoading?<Button name="load more" onClick={LoadMore}/>:<></>}
+        {isLoading && !isFirstLoading?<Loader color="white"/>:<></>}
+        <div style={{height: "50px"}}></div>
     </div>
 }

@@ -3,7 +3,7 @@ import { CreateReactStore } from "../../../shared/simple-state-meneger";
 //для сохранения значений при перезапуске
 const localStorageKey = "formDataStoragekey";
 function saveStore(){
-    localStorage.setItem(localStorageKey, JSON.stringify(getStore()));
+    localStorage.setItem(localStorageKey, JSON.stringify(getFormStore()));
 }
 function loadStore(){
     let json = localStorage.getItem(localStorageKey);
@@ -14,8 +14,8 @@ function loadStore(){
 
 
 type FormState = {
-    categories: string,
-    sorting: string,
+    categories: "all"|"art"|"biography"|"computers"|"history"|"medical"|"poetry",
+    sorting: "relevance"|"newest",
     inputtext: string,
 }
 const initState: FormState = loadStore()||{
@@ -25,5 +25,5 @@ const initState: FormState = loadStore()||{
 }
 
 
-export const { useSelector, updateStore, subscribe, getStore } = CreateReactStore(initState);
+export const { useSelector: useFormSelector, updateStore, subscribe, getStore: getFormStore } = CreateReactStore(initState);
 subscribe((s)=>s, saveStore);

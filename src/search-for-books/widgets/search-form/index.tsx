@@ -3,7 +3,7 @@ import styles from "./index.module.css"
 import { Button } from "../../../shared/components/button";
 import { Input } from "../../../shared/components/input";
 import { Select } from "../../../shared/components/select";
-import { updateStore, useSelector } from "./formState";
+import { updateStore, useFormSelector } from "./formState";
 
 export type SearctData = {
     categories: string;
@@ -12,25 +12,21 @@ export type SearctData = {
 }
 
 type props = {
-    onSubmit: (data: SearctData )=>Promise<void>
+    onClickSubmit: ()=>void
 }
 
 
-export function SeacrhForm({ onSubmit }:props){
-    const {categories, sorting, inputtext} = useSelector((s)=>s);
+export function SeacrhForm({ onClickSubmit }:props){
+    const {categories, sorting, inputtext} = useFormSelector((s)=>s);
 
 
     async function onClick(){
-        onSubmit({
-            categories,
-            sorting,
-            inputtext,
-        });
+        onClickSubmit();
     }
-    function setCategories(newValue: string){
+    function setCategories(newValue: "all" | "art" | "biography" | "computers" | "history" | "medical" | "poetry"){
         updateStore((s)=>{s.categories = newValue})
     }
-    function setSorting(newValue: string){
+    function setSorting(newValue: "relevance" | "newest"){
         updateStore((s)=>{s.sorting = newValue})
     }
     function setInputText(newValue: string){
@@ -42,7 +38,7 @@ export function SeacrhForm({ onSubmit }:props){
         {/* input */}
         <div className={styles.searchInput}>
             <Input value={inputtext} placeholder="поиск" onChange={setInputText}/>
-            <Button name="искать" onClick={onClick}/>
+            <Button name="seacrh" onClick={onClick}/>
         </div>
 
         {/* selectors */}
@@ -51,14 +47,14 @@ export function SeacrhForm({ onSubmit }:props){
                 <h3 style={{color: "white"}}>Categories:</h3>
                 <Select 
                 value={categories} 
-                onChange={setCategories}
+                onChange={(newVal)=>setCategories(newVal as any)}
                 options={["all", "art", "biography", "computers", "history", "medical", "poetry"]}/>
             </div>
             <div style={{width: "240px"}}>
                 <h3 style={{color: "white"}}>Sorting by:</h3>
                 <Select 
                 value={sorting} 
-                onChange={setSorting}
+                onChange={(newVal)=>setSorting(newVal as any)}
                 options={["relevance","newest"]}/>
             </div>
         </div>

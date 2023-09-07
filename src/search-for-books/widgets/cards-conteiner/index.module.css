@@ -1,0 +1,46 @@
+.cardsConteiner{
+    width: 100%;
+    max-width: 682px;
+    min-height: 300px;
+    padding-top: 20px;
+    padding-left: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+.card > a {
+    text-decoration: none;
+    color: black;
+}
+
+.messageConteiner{
+    min-height: 300px;
+
+
+    font-size: 26px;
+    color: white;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+@media (max-width: 680px) {
+	.cardsConteiner{
+        max-width: 462px;
+    }
+}
+
+@media (max-width: 460px) {
+	.cardsConteiner{
+        max-width: 242px;
+    }
+}

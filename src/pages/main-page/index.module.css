@@ -4,9 +4,13 @@
 
     align-items: center;
     justify-content: center;
-
-    border: 1px solid red;
 }
+
 .mainPage > * > h1{
     cursor: default;
+}
+
+.countResults{
+    color: white;
+    margin: 20px 0;
 }

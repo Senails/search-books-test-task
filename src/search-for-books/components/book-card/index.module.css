@@ -1,0 +1,41 @@
+.conteiner{
+    width: 200px;
+    height: 300px;
+    padding: 15px;
+
+    border-radius: 15px;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.conteiner > img {
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.bookName{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 0 10px;
+}
+
+.categorie{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+}
+.autorName{
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.autorName, .categorie, .bookName{
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
