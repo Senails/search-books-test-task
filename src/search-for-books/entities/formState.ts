@@ -23,8 +23,7 @@ const initState: FormState = loadStore()||{
     inputtext: "",
 }
 
-// простейший стор, для сохранения состояния формы 
-// позволит удобно сохранять значения формы при переходе
-// между страницами, и при перезапуске приложения
+// simple store for state of form 
+// save state on restart aplication or page
 export const { useSelector: useFormSelector, updateStore, subscribe, getStore: getFormStore } = CreateReactStore(initState);
 subscribe((s)=>s, saveStore);

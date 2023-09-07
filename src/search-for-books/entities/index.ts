@@ -3,13 +3,12 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 
 
 export type BookInfo ={
-    imageURL: string;
-    autorName: string;
-    bookName: string;
-    categorie?: string;
-    linkURL: string;
+  imageURL: string;
+  autorName: string;
+  bookName: string;
+  categorie?: string;
+  linkURL: string;
 }
-
 export interface booksState {
   isFirstLoading: boolean,
   isLoading: boolean,
@@ -49,7 +48,7 @@ export const booksSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
+
 export const { 
   setLoading,
   setFirstLoading,
