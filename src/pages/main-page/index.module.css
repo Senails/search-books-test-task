@@ -1,6 +1,25 @@
 .mainPage{
     display: flex;
-    
+    flex-direction: column;
+
     align-items: center;
     justify-content: center;
+}
+.mainPage > * > h1{
+    cursor: default;
+}
+
+.searchInput{
+    width: calc(100% - 40px);
+    max-width: 500px;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: flex-end;
+}
+.searchInput > *{
+    box-sizing:content-box;
+    margin: 6px;
 }
