@@ -1,52 +1,35 @@
 import { BookInfo, reset, setBooksList, setCountResults, setFirstLoading, setLoading } from ".";
 import { dispatch, getState } from "../../redux";
-import { getBook, getBooks } from "../api/getBooks";
-import { getFormStore } from "../widgets/search-form/formState";
+import { getBook, getBooks, getBooksResponse, requestError } from "../api/getBooks";
+import { getFormStore } from "./formState";
 
 
-export async function onClickSubmit(){
+export async function FirstLoading(){
     const { inputtext, sorting, categories} = getFormStore();
-    const { booksList } = getState().books;
 
     dispatch(reset());
-    dispatch(setFirstLoading(true));
     dispatch(setLoading(true));
 
-    let json; 
+    const json = await getBooks({
+        searchText: inputtext,
+        sortingMethod: sorting,
+        indexStart: "0",
+        categories: categories!=="all"? categories : undefined,
+    });
 
-    try{
-        json = await getBooks({
-            searchText: inputtext,
-            sortingMethod: sorting,
-            indexStart: `${booksList.length}`,
-            categories: categories!=="all"? categories : undefined,
-        });
-    }catch{
-        json={error: true};
-    }
-
-    if (json.error){
+    if ((json as requestError).error || (json as getBooksResponse).totalItems === 0){
         dispatch(setCountResults(0))
         dispatch(setBooksList([]))
     }else{
-        console.log(json);
-        dispatch(setCountResults(json.totalItems))
-        const bookList: BookInfo[] = json.items.map((elem: any)=>{
+        const data = json as getBooksResponse;
+        dispatch(setCountResults(data.totalItems))
 
-            // console.log(elem);
-
-            // console.log(elem.volumeInfo.imageLinks?.thumbnail);
-            // // console.log(elem.volumeInfo.authors);
-            // console.log(elem.volumeInfo.title);
-            // // console.log(elem.volumeInfo.categories[0]);
-            // console.log(`/book/${elem.id}`);
-
-
+        const bookList: BookInfo[] = data.items.map((elem)=>{
             return {
                 imageURL: elem.volumeInfo.imageLinks?.thumbnail,
-                autorName: "elem.volumeInfo.authors[0]",
+                autorName: elem.volumeInfo.authors?.[0]||"",
                 bookName: elem.volumeInfo.title,
-                categorie: "elem.volumeInfo.categories[0]",
+                categorie: elem.volumeInfo.categories?.[0]||undefined,
                 linkURL: `/book/${elem.id}`,
             }
         })
@@ -56,8 +39,6 @@ export async function onClickSubmit(){
 
     dispatch(setLoading(false));
     dispatch(setFirstLoading(false));
-
-    console.log(json.items[0].volumeInfo);
 }
 
 export async function LoadMore(){

@@ -3,7 +3,7 @@ import styles from "./index.module.css"
 import { Button } from "../../../shared/components/button";
 import { Input } from "../../../shared/components/input";
 import { Select } from "../../../shared/components/select";
-import { updateStore, useFormSelector } from "./formState";
+import { updateStore, useFormSelector } from "../../entities/formState";
 
 export type SearctData = {
     categories: string;
@@ -37,7 +37,12 @@ export function SeacrhForm({ onClickSubmit }:props){
     return <div className={styles.conteiner}>
         {/* input */}
         <div className={styles.searchInput}>
-            <Input value={inputtext} placeholder="поиск" onChange={setInputText}/>
+            <Input 
+                value={inputtext} 
+                placeholder="поиск" 
+                onChange={setInputText}
+                onEnterPush={onClickSubmit}
+            />
             <Button name="seacrh" onClick={onClick}/>
         </div>
 

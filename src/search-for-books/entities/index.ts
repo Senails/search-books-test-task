@@ -6,7 +6,7 @@ export type BookInfo ={
     imageURL: string;
     autorName: string;
     bookName: string;
-    categorie: string;
+    categorie?: string;
     linkURL: string;
 }
 

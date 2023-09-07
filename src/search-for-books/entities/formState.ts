@@ -1,4 +1,4 @@
-import { CreateReactStore } from "../../../shared/simple-state-meneger";
+import { CreateReactStore } from "../../shared/simple-state-meneger";
 
 //для сохранения значений при перезапуске
 const localStorageKey = "formDataStoragekey";

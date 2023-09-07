@@ -5,11 +5,12 @@ import { SeacrhForm } from '../../search-for-books/widgets/search-form/index';
 import { CardsConteiner } from '../../search-for-books/widgets/cards-conteiner/index';
 import { Button } from '../../shared/components/button/index';
 import { useAppSelector } from "../../redux/hooks";
-import { LoadMore, onClickSubmit } from "../../search-for-books/entities/actions";
+import { LoadMore, FirstLoading } from "../../search-for-books/entities/actions";
 
 
 export function MainPage(){
-    const {isLoading, isFirstLoading, countResults} = useAppSelector((s)=>s.books);
+    const {isLoading, isFirstLoading, countResults, booksList} = useAppSelector((s)=>s.books);
+
 
     return <div className={styles.mainPage}>
         <div style={{height: "50px"}}></div>
@@ -18,7 +19,7 @@ export function MainPage(){
         </MouseHoverHint>
 
         {/* форма */}
-        <SeacrhForm onClickSubmit={onClickSubmit}/>
+        <SeacrhForm onClickSubmit={FirstLoading}/>
 
         {/* countResults */}
         {countResults?<p className={styles.countResults}>Count Results: {countResults}</p>:<></>}
@@ -27,7 +28,11 @@ export function MainPage(){
         <CardsConteiner/>
 
         {/* load more */}
-        {!isLoading && !isFirstLoading?<Button name="load more" onClick={LoadMore}/>:<></>}
+        {!isLoading 
+        && !isFirstLoading 
+        && countResults > booksList.length?<Button name="load more" onClick={LoadMore}/>:<></>}
+
+        {/* Loader */}
         {isLoading && !isFirstLoading?<Loader color="white"/>:<></>}
         <div style={{height: "50px"}}></div>
     </div>
