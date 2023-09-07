@@ -1,6 +1,6 @@
 import { CreateReactStore } from "../../shared/simple-state-meneger";
 
-//для сохранения значений при перезапуске
+
 const localStorageKey = "formDataStoragekey";
 function saveStore(){
     localStorage.setItem(localStorageKey, JSON.stringify(getFormStore()));
@@ -10,7 +10,6 @@ function loadStore(){
     if (!json) return undefined;
     return JSON.parse(json);
 }
-//для сохранения значений при перезапуске
 
 
 type FormState = {
@@ -24,6 +23,8 @@ const initState: FormState = loadStore()||{
     inputtext: "",
 }
 
-
+// простейший стор, для сохранения состояния формы 
+// позволит удобно сохранять значения формы при переходе
+// между страницами, и при перезапуске приложения
 export const { useSelector: useFormSelector, updateStore, subscribe, getStore: getFormStore } = CreateReactStore(initState);
 subscribe((s)=>s, saveStore);

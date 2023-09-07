@@ -1,6 +1,7 @@
 import { BookInfo, reset, setBooksList, setCountResults, setFirstLoading, setLoading } from ".";
 import { dispatch, getState } from "../../redux";
-import { getBook, getBooks, getBooksResponse, requestError } from "../api/getBooks";
+import { getBook, getBooks } from "../api/getBooks";
+import { getBooksRequestError, getBooksResponse } from "../api/types";
 import { getFormStore } from "./formState";
 
 
@@ -17,7 +18,7 @@ export async function FirstLoading(){
         categories: categories!=="all"? categories : undefined,
     });
 
-    if ((json as requestError).error || (json as getBooksResponse).totalItems === 0){
+    if ((json as getBooksRequestError).error || (json as getBooksResponse).totalItems === 0){
         dispatch(setCountResults(0))
         dispatch(setBooksList([]))
     }else{

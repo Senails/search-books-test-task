@@ -1,24 +1,15 @@
-type props= {
-    indexStart: string,
-    searchText: string,
-    categories?: "all"|"art"|"biography"|"computers"|"history"|"medical"|"poetry",
-    sortingMethod: "relevance"|"newest",
-}   
+import { 
+    getBookResponse,
+    getBooksResponse,
+    getBooksRequestError,
+    getBooksProps 
+} from "./types";
 
+  
 const key = "AIzaSyAw3d_Yd8vVgpnV8qeBS6al7XQ9kdRGvKE";
 
 
-export type requestError = {
-    error: any
-}
-
-export type getBooksResponse = {
-    items: getBookResponse[],
-    totalItems: number,
-}
-
-
-export async function getBooks(props: props):Promise<getBooksResponse|requestError>{
+export async function getBooks(props: getBooksProps):Promise<getBooksResponse|getBooksRequestError>{
     const {indexStart, searchText, categories, sortingMethod } = props
     const categoriesText = categories ? `+subject:${categories}`:"";
 
@@ -29,29 +20,15 @@ export async function getBooks(props: props):Promise<getBooksResponse|requestErr
     query.set("orderBy", sortingMethod );
     query.set("maxResults", "30");
 
-
-    const res = await fetch("https://www.googleapis.com/books/v1/volumes"+`?${query.toString()}`);
-    const json: getBooksResponse = await res.json();
-
-    console.log(props, json);
-
-    return json;
-}
-
-export type getBookResponse = {
-    id:string,
-    volumeInfo: {
-        authors?: string[],
-        description: string,
-        title: string,
-        imageLinks:{
-            thumbnail:string,
-        },
-        categories?: string[]
+    try{
+        const res = await fetch("https://www.googleapis.com/books/v1/volumes"+`?${query.toString()}`);
+        const json: getBooksResponse = await res.json();
+        return json;
+    }catch{
+        return {error: true}
     }
 }
-
-export async function getBook(bookId: string):Promise<getBookResponse|requestError>{
+export async function getBook(bookId: string):Promise<getBookResponse|getBooksRequestError>{
     const query = new URLSearchParams();
     query.set("key",key);
     
