@@ -3,7 +3,7 @@ import styles from "./index.module.css"
 import { Button } from "../../../shared/components/button";
 import { Input } from "../../../shared/components/input";
 import { Select } from "../../../shared/components/select";
-import { updateStore, useFormSelector } from "../../entities/formState";
+import { updateStore, useFormSelector } from "../../entities/form-state";
 
 export type SearctData = {
     categories: string;

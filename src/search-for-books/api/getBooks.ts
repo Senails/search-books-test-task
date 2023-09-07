@@ -26,7 +26,7 @@ export async function getBooks(props: getBooksProps):Promise<getBooksResponse|ge
         const res = await fetch("https://www.googleapis.com/books/v1/volumes"+`?${query.toString()}`);
         const json: getBooksResponse = await res.json();
 
-        // console.log(props, json);
+        console.log(props, json);
         return json;
     }catch{
         return {error: true}

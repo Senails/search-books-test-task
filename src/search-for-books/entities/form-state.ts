@@ -24,6 +24,6 @@ const initState: FormState = loadStore()||{
 }
 
 // simple store for state of form 
-// save state on restart aplication or page
+// safe state on restart aplication or page
 export const { useSelector: useFormSelector, updateStore, subscribe, getStore: getFormStore } = CreateReactStore(initState);
 subscribe((s)=>s, saveStore);

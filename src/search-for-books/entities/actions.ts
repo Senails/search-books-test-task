@@ -1,8 +1,8 @@
-import { BookInfo, pushToBooksList, reset, setBooksList, setCountResults, setFirstLoading, setLoading } from ".";
+import { BookInfo, pushToBooksList, reset, setBooksList, setCountResults, setFirstLoading, setLoading } from "./redux-books-slice";
 import { dispatch, getState } from "../../redux";
-import { getBook, getBooks } from "../api/getBooks";
+import { getBooks } from "../api/getBooks";
 import { getBooksRequestError, getBooksResponse } from "../api/types";
-import { getFormStore } from "./formState";
+import { getFormStore } from "./form-state";
 
 
 export async function FirstLoading(){
@@ -74,7 +74,6 @@ export async function LoadMore(){
 
         dispatch(pushToBooksList(bookList))
     }
-
 
     dispatch(setLoading(false));
 }

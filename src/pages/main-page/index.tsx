@@ -7,7 +7,7 @@ import { Button } from '../../shared/components/button/index';
 import { useAppSelector } from "../../redux/hooks";
 import { LoadMore, FirstLoading } from "../../search-for-books/entities/actions";
 import { useState, useEffect, useRef } from 'react';
-import { getMainPageStore, updateMainPageStore } from "./state";
+import { getScrollStore, updateScrollStore } from "./scroll-state";
 
 
 export function MainPage(){
@@ -25,7 +25,7 @@ export function MainPage(){
             if (showUpButton) setUpButton(false);
         }
 
-        updateMainPageStore((s)=>{
+        updateScrollStore((s)=>{
             s.scrollTop = target.scrollTop;
             s.scrollHeight = target.scrollHeight;
         });
@@ -36,7 +36,7 @@ export function MainPage(){
 
 
     useEffect(()=>{
-        const { scrollTop, scrollHeight } = getMainPageStore();
+        const { scrollTop, scrollHeight } = getScrollStore();
 
         if (conteinerRef.current?.scrollHeight === scrollHeight){
             if (scrollHeight > document.body.clientHeight*1.5){

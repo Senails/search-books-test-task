@@ -1,11 +1,12 @@
 import styles from "./index.module.css"
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../shared/components/button/index';
 import { Loader } from "../../shared/components/loader";
 
 
 export function BookPage(){
-
+    let { bookID } = useParams();
+    console.log(bookID);
     // const json2 = await getBook("VvOxEAAAQBAJ");
     // console.log(json2.volumeInfo);
 

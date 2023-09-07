@@ -1,5 +1,4 @@
 import styles from "./index.module.css"
-import { useEffect } from 'react';
 import { MouseHoverHint } from '../../../shared/components/mouse-hover-hint/index';
 
 type props = {
