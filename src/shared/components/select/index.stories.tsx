@@ -33,8 +33,6 @@ export const Primary: Story = {
             "var1",
             "var2",
             "var3",
-            "var4",
-            "var5",
         ],
         onChange(val) {
             console.log(val);

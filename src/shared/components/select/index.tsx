@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import styles from './index.module.css';
 
 type TProps = {
@@ -8,21 +8,27 @@ type TProps = {
 }
 
 export function Select({value, options, onChange}:TProps){
-    let [open,setopen] = useState(false);
+    const [open,setopen] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
 
 
     function clickOnSelect(){
+        if (ref.current) ref.current.scrollTop = 0;
         setopen(!open);
     }
     function innerOnChange(index:number){
-        console.log(index)
+        if (ref.current) ref.current.scrollTop = 0;
         onChange?.(options[index]);
+    }
+    function mouseLeave(){
+        if (ref.current) ref.current.scrollTop = 0;
+        setopen(false);
     }
 
     return <div className={styles.conteiner}>
-        <div className={ styles.select + ` ${open ? styles.open:''}`}
+        <div ref={ref} className={ styles.select + ` ${open ? styles.open:''}`}
         onClick={ clickOnSelect }
-        onMouseLeave={ ()=>setopen(false) }>
+        onMouseLeave={ mouseLeave }>
                 
             {options.map((text,i)=>
             <div 

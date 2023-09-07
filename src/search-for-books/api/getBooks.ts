@@ -1,7 +1,7 @@
 type props= {
     indexStart: string,
     searchText: string,
-    categories?: string,
+    categories?: "all"|"art"|"biography"|"computers"|"history"|"medical"|"poetry",
     sortingMethod: "relevance"|"newest",
 }   
 

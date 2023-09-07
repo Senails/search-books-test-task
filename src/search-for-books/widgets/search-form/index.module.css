@@ -1,0 +1,28 @@
+.conteiner{
+    width: calc(100% - 40px);
+    max-width: 500px;
+}
+
+.searchInput{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: flex-end;
+}
+.searchInput > *{
+    box-sizing:content-box;
+    margin: 6px;
+}
+
+.selectors{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectors > div {
+    margin: 5px;
+}
