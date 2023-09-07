@@ -79,6 +79,5 @@ export function MainPage(){
         {showUpButton?<span className={styles.upButton}>
             <Button name="^ Up ^" onClick={upButtonClick}/>
         </span>:<></>}
-        
     </div>
 }
