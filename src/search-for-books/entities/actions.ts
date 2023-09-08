@@ -28,7 +28,7 @@ export async function FirstLoading(){
         const bookList: BookInfo[] = data.items.map((elem)=>{
             return {
                 imageURL: elem.volumeInfo.imageLinks?.thumbnail,
-                autorName: elem.volumeInfo.authors?.[0]||"",
+                autorsNames: elem.volumeInfo.authors || [""],
                 bookName: elem.volumeInfo.title,
                 categorie: elem.volumeInfo.categories?.[0]||undefined,
                 linkURL: `/book/${elem.id}`,
@@ -65,7 +65,7 @@ export async function LoadMore(){
         const bookList: BookInfo[] = data.items.map((elem)=>{
             return {
                 imageURL: elem.volumeInfo.imageLinks?.thumbnail,
-                autorName: elem.volumeInfo.authors?.[0]||"",
+                autorsNames: elem.volumeInfo.authors || [""],
                 bookName: elem.volumeInfo.title,
                 categorie: elem.volumeInfo.categories?.[0]||undefined,
                 linkURL: `/book/${elem.id}`,

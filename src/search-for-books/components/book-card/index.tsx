@@ -3,14 +3,14 @@ import { MouseHoverHint } from '../../../shared/components/mouse-hover-hint/inde
 
 type props = {
     imageURL: string,
-    autorName?: string,
+    autorsNames?: string[],
     bookName: string,
     categorie?: string,
 }
 
 
 export function BookCard(props: props){
-    const {imageURL, autorName, bookName, categorie} = props;
+    const {imageURL, autorsNames, bookName, categorie} = props;
 
     return <div className={styles.conteiner}>
         {/* bookName */}
@@ -31,9 +31,9 @@ export function BookCard(props: props){
         </span>:<></>}
 
         {/* autorName */}
-        {autorName?<span className={styles.autorName}>
-            <MouseHoverHint text={autorName}>
-                {autorName}
+        {autorsNames?.length!>0?<span className={styles.autorName}>
+            <MouseHoverHint text={autorsNames?.join(', ')!}>
+                {autorsNames?.join(', ')}
             </MouseHoverHint>
         </span>:<></>}
     </div>
