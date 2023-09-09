@@ -19,7 +19,7 @@ type FormState = {
 }
 const initState: FormState = loadStore()||{
     categories: "all",
-    sorting: "sorting",
+    sorting: "relevance",
     inputtext: "",
 }
 

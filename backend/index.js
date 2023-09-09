@@ -2,9 +2,7 @@ import express from 'express';
 import { dirname, join } from 'path';
 
 const app = express();
-console.log(111);
-let filepath = join(dirname("./"),'../build/');
-console.log(filepath);
+let filepath = join(dirname("./"),'./build/');
 
 app.use(express.static(filepath));
 
