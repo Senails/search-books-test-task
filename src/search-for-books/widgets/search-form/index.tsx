@@ -39,7 +39,7 @@ export function SeacrhForm({ onClickSubmit }:props){
         <div className={styles.searchInput}>
             <Input 
                 value={inputtext} 
-                placeholder="поиск" 
+                placeholder="search" 
                 onChange={setInputText}
                 onEnterPush={onClickSubmit}
             />

@@ -1,15 +1,18 @@
 import express from 'express';
-// import { dirname, join } from 'path';
+import { dirname, join } from 'path';
 
 const app = express();
-// let filepath = join(dirname,'../../frontend/build/');
+console.log(111);
+let filepath = join(dirname("./"),'../build/');
+console.log(filepath);
 
-// app.use(express.static(filepath));
+app.use(express.static(filepath));
 
 app.get('*',(req,res)=>{
-    res.contentType('text/plain');
+    res.contentType('text/html');
     res.statusCode = 200;
-    res.send("response")
+    res.sendFile(filepath+"index.html");
+    // res.send("response")
 }) 
 
 /////
