@@ -20,7 +20,7 @@
     align-items: center;
 }
 
-.bookInfo{
+.dataConteiner{
     display: flex;
     flex-wrap: wrap;
 
@@ -28,7 +28,7 @@
 
 }
 
-.bookInfo > * {
+.dataConteiner > * {
     margin-top: 15px;
 }
 

@@ -13,8 +13,6 @@ export function BookInfo({ bookID }: props){
         if (!bookID) return;
         const res = await getBook(bookID);
 
-        console.log(res)
-
         if ((res as getBooksRequestError).error) return;
         return res as getBookResponse;
     });
@@ -35,7 +33,7 @@ export function BookInfo({ bookID }: props){
         </div>}
 
         {/* Data */}
-        {Data && <div className={styles.bookInfo}>
+        {Data && <div className={styles.dataConteiner}>
             {Data.volumeInfo.imageLinks?.thumbnail && <div 
                 style={{backgroundImage: `url(${Data.volumeInfo.imageLinks.thumbnail})`}}
                 className={styles.bookCover}>
