@@ -1,6 +1,6 @@
 .cardsConteiner{
     width: 100%;
-    max-width: 682px;
+    max-width: 902px;
     min-height: 300px;
     padding-top: 20px;
     padding-left: 20px;
@@ -33,6 +33,11 @@
     text-align: center;
 }
 
+@media (max-width: 900px) {
+	.cardsConteiner{
+        max-width: 682px;
+    }
+}
 @media (max-width: 680px) {
 	.cardsConteiner{
         max-width: 462px;
