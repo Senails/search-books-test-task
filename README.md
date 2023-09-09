@@ -7,7 +7,7 @@
 - Docker образ: https://hub.docker.com/r/senails/test_task1_conteiner  
 
 #### Стек технологий:  
--React
--TypeScript
--Redux-toolkit
--React-Router
+- React
+- TypeScript
+- Redux-toolkit
+- React-Router
