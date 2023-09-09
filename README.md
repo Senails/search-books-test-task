@@ -6,5 +6,8 @@
 - Репозиторий: https://github.com/Senails/search-books-test-task  
 - Docker образ: https://hub.docker.com/r/senails/test_task1_conteiner  
 
-Стек технологий:
-React, TypeScript, Redux-toolkit, React-Router
+#### Стек технологий:  
+-React
+-TypeScript
+-Redux-toolkit
+-React-Router
