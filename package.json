@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && npm run docker-build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
 
@@ -32,7 +32,7 @@
     "server": "node ./backend/index.js",
 
     "docker-build": "docker build --tag senails/test_task1_conteiner .",
-    "docker-conteiner":"docker run -p 5005:3001 senails/test_task1_conteiner"
+    "docker-conteiner":"docker run -p 5006:3001 senails/test_task1_conteiner"
   },
   "eslintConfig": {
     "extends": [
