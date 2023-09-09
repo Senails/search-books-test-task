@@ -45,6 +45,7 @@ export function MainPage(){
         }
 
         onScroll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
 

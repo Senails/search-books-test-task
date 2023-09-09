@@ -64,7 +64,7 @@ export async function LoadMore(){
 
         const bookList: BookInfo[] = data.items.map((elem)=>{
             return {
-                imageURL: elem.volumeInfo.imageLinks?.thumbnail,
+                imageURL: elem.volumeInfo.imageLinks?.thumbnail||undefined,
                 autorsNames: elem.volumeInfo.authors || [""],
                 bookName: elem.volumeInfo.title,
                 categorie: elem.volumeInfo.categories?.[0]||undefined,

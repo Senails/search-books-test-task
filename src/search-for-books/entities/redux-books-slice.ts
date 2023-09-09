@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 
 
 export type BookInfo ={
-  imageURL: string;
+  imageURL: string|undefined;
   autorsNames: string[];
   bookName: string;
   categorie?: string;

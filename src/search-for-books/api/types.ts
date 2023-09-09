@@ -20,8 +20,8 @@ export type getBookResponse = {
         authors?: string[],
         description: string,
         title: string,
-        imageLinks:{
-            thumbnail:string,
+        imageLinks?:{
+            thumbnail?:string,
         },
         categories?: string[]
     }

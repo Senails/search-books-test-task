@@ -2,7 +2,7 @@ import styles from "./index.module.css"
 import { MouseHoverHint } from '../../../shared/components/mouse-hover-hint/index';
 
 type props = {
-    imageURL: string,
+    imageURL?: string,
     autorsNames?: string[],
     bookName: string,
     categorie?: string,
@@ -21,7 +21,7 @@ export function BookCard(props: props){
         </span>:<></>}
 
         {/* image */}
-        <img src={imageURL} style={{maxHeight:"150px"}}/>
+        <img src={imageURL} style={{maxHeight:"150px"}} alt="book cover"/>
 
         {/* categorie */}
         {categorie?<span className={styles.categorie}>

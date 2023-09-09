@@ -1,0 +1,57 @@
+.conteiner{
+    width: 100%;
+    max-width: min(900px , calc(100% - 50px) ); 
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.errorMessage{
+    height: 150px;
+
+    font-size: 30px;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bookInfo{
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+}
+
+.bookInfo > * {
+    margin-top: 15px;
+}
+
+.bookCover{
+    width: 300px;
+    height: 400px;
+    flex-grow: 0;
+
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.bookInformation{
+    width: calc(100% - 300px);
+    padding: 10px;
+    min-width: 300px;
+    flex-grow: 1;
+
+    color: #f0edd6;
+}
+
+.contentPart{
+    margin: 15px;
+}
