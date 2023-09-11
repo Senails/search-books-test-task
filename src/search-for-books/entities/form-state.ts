@@ -1,4 +1,4 @@
-import { CreateReactStore } from "../../shared/simple-state-meneger";
+import { createEasyStore } from "easy-state-meneger-react";
 
 
 const localStorageKey = "formDataStoragekey";
@@ -25,5 +25,5 @@ const initState: FormState = loadStore()||{
 
 // simple store for state of form 
 // safe state on restart aplication or page
-export const { useSelector: useFormSelector, updateStore, subscribe, getStore: getFormStore } = CreateReactStore(initState);
+export const { useSelector: useFormSelector, updateStore, subscribe, getStore: getFormStore } = createEasyStore(initState);
 subscribe((s)=>s, saveStore);
