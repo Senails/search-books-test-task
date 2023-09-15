@@ -1,4 +1,4 @@
-import { createEasyStore } from 'easy-state-meneger-react';
+import { createEasyStore } from 'easy-state-maneger-react';
 
 const initState = {
     scrollTop: 0,
